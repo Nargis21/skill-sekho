@@ -148,7 +148,7 @@ class CourseController extends Controller
         $courses = Course::where([
             ['course_category', '=', $category_name],
             ['status', '=', '2'],
-        ])->get();
+        ])->simplePaginate(8);
         return view('frontend.course.courses', compact('courses', 'category'));
     }
 

@@ -1,7 +1,7 @@
 @php
 use App\Models\HomeSlider\SliderContent;
-$firstSlider = SliderContent::where('slider_name', 'First Slider')->first();
-$sliderImages = App\Models\HomeSlider\SliderImage::where('slider_name', 'First Slider')->get();
+$firstSlider = SliderContent::where('slider_name', 'Third Slider')->first();
+$sliderImages = App\Models\HomeSlider\SliderImage::where('slider_name', 'Third Slider')->get();
 @endphp
 
 <section id="aboutSection" class="about">

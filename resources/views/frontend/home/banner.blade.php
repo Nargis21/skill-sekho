@@ -12,7 +12,7 @@ $homeBanner = App\Models\HomeBanner::find(1);
              </div>
              <div class="col-xl-5 col-lg-6">
                  <div class="banner__content">
-                     <p class="title wow fadeInUp text-black fs-1 fw-bold lh-base" data-wow-delay=".2s">{{ $homeBanner->title }}</p>
+                     <h3 class="title wow fadeInUp fs-1 lh-base" data-wow-delay=".2s">{{ $homeBanner->title }}</h3>
                      <p class="wow fadeInUp" data-wow-delay=".4s">{{ $homeBanner->short_title }}</p>
                      <a href="about.html" class="btn banner__btn wow fadeInUp" data-wow-delay=".6s">Explore Courses</a>
                  </div>

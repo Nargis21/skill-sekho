@@ -3,7 +3,7 @@
 
 @php
 use App\Models\Category;
-$activeCategory = Category::where('status', '2')->get();;
+$activeCategory = Category::where('status', '2')->get();
 $durations = ['1 Month','2 Months','3 Months','4 Months','5 Months','6 Months',]
 @endphp
 
