@@ -12,20 +12,20 @@ $allCategory = Category::where('status', '2')->get();;
                     <div class="menu__wrap">
                         <nav class="menu__nav">
                             <div class="logo">
-                                <a href="index.html" class="logo__black"><img src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
-                                <a href="index.html" class="logo__white"><img src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
+                                <a href="{{ url('/') }}" class="logo__black"><img src="{{ asset('frontend/assets/img/logo/logo_black.png') }}" alt=""></a>
+                                <a href="{{ url('/') }}" class="logo__white"><img src="{{ asset('frontend/assets/img/logo/logo_white.png') }}" alt=""></a>
                             </div>
                             <div class="navbar__wrap main__menu d-none d-xl-flex">
                                 <ul class="navigation">
-                                    <li class="active"><a href="{{ url('/') }}">Home</a></li>
-                                    <li class="menu-item-has-children"><a href="#">Course Category</a>
+                                    <li class="active"><a href="{{ url('/home') }}">Home</a></li>
+                                    <li class="menu-item-has-children"><a href="">Course Category</a>
                                         <ul class="sub-menu">
                                             @foreach($allCategory as $category)
                                             <li><a href="{{ route('show.courses',$category->category_name) }}">{{ $category->category_name }}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">contact me</a></li>
+                                    <li><a href="contact.html">Contact Us</a></li>
                                     @if(Auth::user())
                                     <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                     @endif

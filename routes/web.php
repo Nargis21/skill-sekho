@@ -6,7 +6,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Home\BannerController;
-use App\Http\Controllers\Home\AboutController;
 use App\Http\Controllers\Home\SliderController;
 use App\Http\Controllers\OrderController;
 

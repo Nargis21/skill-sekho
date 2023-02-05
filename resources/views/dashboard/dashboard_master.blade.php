@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Dashboard</title>
+    <title>Skill-Sekho</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
@@ -49,7 +49,7 @@
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
-        <div class="main-content">
+        <div class="main-content mt-3">
 
             @yield('main_content')
             <!-- End Page-content -->
@@ -127,6 +127,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="{{ asset('backend/assets/js/code.js') }}"></script>
+
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
 </body>
 
