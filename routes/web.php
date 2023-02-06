@@ -27,6 +27,9 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('frontend.index');
 });
+Route::get('/contact', function () {
+    return view('frontend.contact');
+});
 
 //order all route
 Route::controller(OrderController::class)->middleware('auth')->group(function(){

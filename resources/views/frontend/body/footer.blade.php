@@ -5,12 +5,11 @@
              <div class="row">
                  <div class="col-lg-6">
                      <div class="section__title">
-                         <span class="sub-title">07 - Say hello</span>
                          <h2 class="title">Any questions? Feel free <br> to contact</h2>
                      </div>
                      <div class="homeContact__content">
-                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
-                         <h2 class="mail"><a href="mailto:Info@webmail.com">Info@webmail.com</a></h2>
+                         <p>Our platform provides you with the tools and resources you need to build the future you want. Join our community of learners today and unlock your full potential!</p>
+                         <h2 class="mail"><a href="mailto:Info@webmail.com">Info@skillsekho.com</a></h2>
                      </div>
                  </div>
                  <div class="col-lg-6">
@@ -39,9 +38,7 @@
                             <h4 class="title">+81383 766 284</h4>
                         </div>
                         <div class="footer__widget__text">
-                            <p>There are many variations of passages of lorem ipsum
-                                available but the majority have suffered alteration
-                                in some form is also here.</p>
+                            <p>Our platform provides you with the tools and resources you need to build the future you want. Join our community of learners today and unlock your full potential!</p>
                         </div>
                     </div>
                 </div>
@@ -49,11 +46,11 @@
                     <div class="footer__widget">
                         <div class="fw-title">
                             <h5 class="sub-title">my address</h5>
-                            <h4 class="title">AUSTRALIA</h4>
+                            <h4 class="title">Bangladesh</h4>
                         </div>
                         <div class="footer__widget__address">
-                            <p>Level 13, 2 Elizabeth Steereyt set <br> Melbourne, Victoria 3000</p>
-                            <a href="mailto:noreply@envato.com" class="mail">noreply@envato.com</a>
+                            <p>CMPI, North Halishahar <br>Port Link Rd, Chittagong 4216</p>
+                            <a href="mailto:noreply@envato.com" class="mail">info@skiillsekho.com</a>
                         </div>
                     </div>
                 </div>
@@ -64,7 +61,7 @@
                             <h4 class="title">socially connect</h4>
                         </div>
                         <div class="footer__widget__social">
-                            <p>Lorem ipsum dolor sit amet enim. <br> Etiam ullamcorper.</p>
+                            <p>Stay connected and build meaningful relationships with this guide to social networking</p>
                             <ul class="footer__social__list">
                                 <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li>

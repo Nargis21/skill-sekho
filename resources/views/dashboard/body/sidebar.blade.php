@@ -10,7 +10,7 @@
             <li class="menu-title mt-3">My Account</li>
             <li>
                 <a href="{{ route('my.courses') }}" class="sub-menu">
-                    <i class=" fas fa-book-reader"></i>
+                    <i class="fas fa-book-reader"></i>
                     <span>My Courses</span>
                 </a>
             </li>
@@ -30,6 +30,7 @@
                 </ul>
             </li>
 
+            @if(Auth::user()->role == '2')
             <li class="menu-title">Frontend Setup</li>
             <li>
                 <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -85,7 +86,7 @@
                     <li><a href="{{ route('users') }}"><i class="fas fa-tasks"></i> Manage User</a></li>
                 </ul>
             </li>
-
+          @endif
             
         </ul>
     </div>

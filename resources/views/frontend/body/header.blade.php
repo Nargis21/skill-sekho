@@ -25,7 +25,7 @@ $allCategory = Category::where('status', '2')->get();;
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="contact.html">Contact Us</a></li>
+                                    <li><a href="{{ url('contact') }}">Contact Us</a></li>
                                     @if(Auth::user())
                                     <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                     @endif

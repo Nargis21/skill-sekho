@@ -50,7 +50,7 @@
                                     </td>
                                     <td >
                                         @if($course->status == 'approved')
-                                        <a href="{{ route('deactivate.course',$course->id) }}" class="btn btn-primary sm " title="Edit Data">
+                                        <a href="" class="btn btn-primary ">
                                             Start Course
                                         </a>
                                         @else
