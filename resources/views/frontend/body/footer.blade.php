@@ -77,7 +77,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="copyright__text text-center">
-                            <p>Copyright @ Theme_Pure 2021 All right Reserved</p>
+                            <p>Copyright © Skill Sekho <script>
+                    document.write(new Date().getFullYear())
+                </script> All right Reserved</p>
                         </div>
                     </div>
                 </div>

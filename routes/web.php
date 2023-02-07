@@ -36,6 +36,7 @@ Route::controller(OrderController::class)->middleware('auth')->group(function(){
     Route::get('checkout/{course_id}','checkout')->name('checkout');
     Route::post('place/order','placeOrder')->name('place.order');
     Route::get('my/courses','myCourses')->name('my.courses');
+    Route::get('start/course/{course_name}','startCourse')->name('start.course');
 });
 
 //admin order all route

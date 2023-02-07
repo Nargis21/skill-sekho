@@ -92,4 +92,8 @@ class OrderController extends Controller
         );
         return redirect()->route('approved.orders')->with($notifications);
     }
+
+    public function startCourse($course_name){
+     return view('frontend.course.start_course',compact('course_name'));
+    }
 }

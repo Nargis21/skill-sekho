@@ -50,7 +50,7 @@
                                     </td>
                                     <td >
                                         @if($course->status == 'approved')
-                                        <a href="" class="btn btn-primary ">
+                                        <a href="{{ route('start.course',$course->course_name) }}" class="btn btn-primary ">
                                             Start Course
                                         </a>
                                         @else

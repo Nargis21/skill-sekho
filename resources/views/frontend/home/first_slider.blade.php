@@ -4,7 +4,7 @@ $firstSlider = SliderContent::where('slider_name', 'First Slider')->first();
 $sliderImages = App\Models\HomeSlider\SliderImage::where('slider_name', 'First Slider')->get();
 @endphp
 
-<section id="aboutSection" class="about">
+<section id="aboutSection" class="about py-5">
      <div class="container">
          <div class="row align-items-center justify-content-center">
              <div class="col-lg-6">

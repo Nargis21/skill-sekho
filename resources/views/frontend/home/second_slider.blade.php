@@ -4,7 +4,7 @@ $firstSlider = SliderContent::where('slider_name', 'Second Slider')->first();
 $sliderImages = App\Models\HomeSlider\SliderImage::where('slider_name', 'Second Slider')->get();
 @endphp
 
-<section class="testimonial">
+<section class="testimonial py-5">
     <div class="container">
         <div class="row align-items-center justify-content-between">
             <div class="col-lg-6 order-0 order-lg-2">

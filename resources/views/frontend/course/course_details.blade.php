@@ -35,13 +35,9 @@
                         <img width="25px" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/null/external-Taka-currency-bearicons-glyph-bearicons.png" />
                         <p class="pt-3 ps-2">{{ $course->price }}</p>
                     </div>
-                   
-                    <div class=" mb-3 mx-auto">
-
+                    <div class="mb-3 w-full">
                         <a href="{{ route('checkout',$course->id) }}" class="btn">Enroll Now</a>
-
                     </div>
-              
                 </div>
 
             </div>
