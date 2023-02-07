@@ -4,11 +4,12 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Home\BannerController;
 use App\Http\Controllers\Home\SliderController;
 use App\Http\Controllers\OrderController;
-
+use GuzzleHttp\Psr7\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +28,11 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('frontend.index');
 });
-Route::get('/contact', function () {
-    return view('frontend.contact');
+
+//contact all route
+Route::controller(ContactController::class)->group(function(){
+    Route::get('/contact','contact')->name('contact');
+    Route::post('/contact/form','contactForm')->name('contact.form');
 });
 
 //order all route

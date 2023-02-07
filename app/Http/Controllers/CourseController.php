@@ -46,7 +46,7 @@ class CourseController extends Controller
 
     public function manageCourse()
     {
-        $allCourse = Course::all();
+        $allCourse = Course::orderBy('id', 'desc')->get();
         return view('dashboard.course.manage_course', compact('allCourse'));
     }
 

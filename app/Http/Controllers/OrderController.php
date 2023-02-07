@@ -6,7 +6,10 @@ use App\Http\Requests\PlaceOrderDataValidation;
 use App\Models\Course;
 use App\Models\Order;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Mail\PlaceOrder;
+use App\Mail\ApprovedOrder;
+use Mail;
+use Auth;
 
 class OrderController extends Controller
 {
@@ -27,6 +30,11 @@ class OrderController extends Controller
             'transaction_id' => $request->transaction_id,
             'created_at' => Carbon::now()
         ]);
+
+         //send email when new category added 
+         $courseName = $request->course_name;
+         Mail::to(Auth::user()->email)->send(new PlaceOrder($courseName));
+
         $notifications = array(
             'message' => 'Course Order Placed Successfully',
             'alert-type' => 'info'
@@ -36,13 +44,13 @@ class OrderController extends Controller
 
     public function myCourses()
     {
-        $courses = Order::withTrashed()->where('user_email', '=', auth()->user()->email)->get();
+        $courses = Order::withTrashed()->where('user_email', '=', auth()->user()->email)->orderBy('id', 'desc')->get();
         return view('dashboard.order.my_courses', compact('courses'));
     }
 
     public function pendingOrders()
     {
-        $orders = Order::where('status', '=', 'pending')->get();
+        $orders = Order::where('status', '=', 'pending')->orderBy('id', 'desc')->get();
         return view('dashboard.order.pending_orders', compact('orders'));
     }
 
@@ -52,6 +60,12 @@ class OrderController extends Controller
             'status' => 'approved',
             'approved_at' => Carbon::now()
         ]);
+        
+         //send email when new category added 
+         $order = Order::findOrFail($order_id);
+         $courseName = $order->course_name;
+         $userEmail = $order->user_email;
+         Mail::to($userEmail)->send(new ApprovedOrder($courseName));
 
         $notifications = array(
             'message' => 'Course Approved Successfully!',
@@ -62,7 +76,7 @@ class OrderController extends Controller
 
     public function approvedOrders()
     {
-        $orders = Order::where('status', '=', 'approved')->get();
+        $orders = Order::where('status', '=', 'approved')->orderBy('id', 'desc')->get();
         return view('dashboard.order.approved_orders', compact('orders'));
     }
 
@@ -79,7 +93,7 @@ class OrderController extends Controller
 
     public function trashedOrders()
     {
-        $orders =  Order::onlyTrashed()->get();
+        $orders =  Order::onlyTrashed()->orderBy('id', 'desc')->get();
         return view('dashboard.order.trashed_orders', compact('orders'));
     }
 

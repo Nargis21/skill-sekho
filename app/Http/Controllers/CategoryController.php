@@ -34,7 +34,7 @@ class CategoryController extends Controller
 
     public function manageCategory()
     {
-        $allCategory = Category::all();
+        $allCategory = Category::orderBy('id', 'desc')->get();
         return view('dashboard.category.manage_category', compact('allCategory'));
     }
 
