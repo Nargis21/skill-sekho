@@ -3,7 +3,7 @@
 
 <div class="container my-5 py-5">
 
-    <p class="mt-5 text-center fs-2 fw-bold text-black">Boots You Career With <span class="text-warning">{{ $category }}</span> </p>
+    <p class="mt-5 text-center fs-2 fw-bold text-black">Boots You Career With <span class="text-warning">Right Stack</span> </p>
 
     @if(count($courses) == 0)
     <div class="d-flex justify-content-center my-5 py-5">

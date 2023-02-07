@@ -143,16 +143,21 @@ class CourseController extends Controller
         return redirect()->route('manage.course')->with($notifications);
     }
 
+    public function allCourses(){
+        $courses = Course::where('status', '=', '2')->simplePaginate(4);
+        return view('frontend.course.all_courses', compact('courses'));
+    }
+
     public function showCourses($category_name){
         $category = $category_name;
         $courses = Course::where([
             ['course_category', '=', $category_name],
             ['status', '=', '2'],
-        ])->simplePaginate(8);
+        ])->simplePaginate(4);
         return view('frontend.course.courses', compact('courses', 'category'));
     }
 
-    public function courseDetails($category_name,$course_id){
+    public function courseDetails($course_id){
        
         $course = Course::findOrFail($course_id);
         return view('frontend.course.course_details', compact('course'));

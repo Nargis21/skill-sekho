@@ -4,6 +4,10 @@
  @include('frontend.home.banner')
  <!-- banner-area-end -->
 
+ <!-- tabs-area -->
+ @include('frontend.home.tabs')
+ <!-- tabs-area-end -->
+
  <!-- first-slider-area -->
  @include('frontend.home.first_slider')
  <!-- first-slider-area-end -->

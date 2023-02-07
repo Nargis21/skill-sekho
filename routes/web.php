@@ -49,9 +49,10 @@ Route::controller(OrderController::class)->middleware('admin')->group(function()
 });
 
 //course all route
-Route::prefix('course')->controller(CourseController::class)->group(function(){
-    Route::get('/{category_name}','showCourses')->name('show.courses');
-    Route::get('/{category_name}/{course_id}','courseDetails')->name('course.details');
+Route::controller(CourseController::class)->group(function(){
+    Route::get('courses/all','allCourses')->name('all.courses');
+    Route::get('courses/{category_name}','showCourses')->name('show.courses');
+    Route::get('course/{course_id}','courseDetails')->name('course.details');
 });
 
 
