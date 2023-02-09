@@ -144,7 +144,7 @@ class CourseController extends Controller
     }
 
     public function allCourses(){
-        $courses = Course::where('status', '=', '2')->orderBy('id', 'desc')->simplePaginate(8);
+        $courses = Course::where('status', '=', '2')->orderBy('id', 'desc')->paginate(8);
         return view('frontend.course.all_courses', compact('courses'));
     }
 
@@ -153,7 +153,7 @@ class CourseController extends Controller
         $courses = Course::where([
             ['course_category', '=', $category_name],
             ['status', '=', '2'],
-        ])->orderBy('id', 'desc')->simplePaginate(8);
+        ])->orderBy('id', 'desc')->paginate(8);
         return view('frontend.course.courses', compact('courses', 'category'));
     }
 

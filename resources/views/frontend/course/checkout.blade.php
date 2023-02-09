@@ -2,6 +2,8 @@
 @section('main_content')
 
 @php
+use App\Models\ContactInformation;
+ $contactInfo = ContactInformation::find(1);
 use App\Models\Order;
 $order = Order::where([
 ['course_name', '=', $course->course_name],
@@ -43,11 +45,11 @@ $order = Order::where([
                 <img width="30px" src="{{ asset('frontend/assets/img/icons/about_icon.png') }}" alt="">
             </div>
 
-            <p class="p-0 m-0 fs-4 text-black">You need to pay <mark class="fw-bold">BDT. {{ $course->price - 1000 }}</mark> <span class="text-secondary">(<s>{{ $course->price }}</s>)</span></p>
-            <p class="py-2 m-0 fs-5  text-black">Please pay at bkash merchant number <mark class="fw-bold">+8801939860072</mark> </p>
+            <p class="p-0 m-0 fs-4 text-black">You need to pay <mark class="fw-bold">BDT. {{ $course->price - 1000 }}</mark> <span class="text-secondary">(<s>BDT. {{ $course->price }}</s>)</span></p>
+            <p class="py-2 m-0 fs-5  text-black">Please pay at bkash merchant number <mark class="fw-bold">{{ $contactInfo->phone1 }}</mark> </p>
             <div class="card w-75 my-3">
                 <div class="card-header text-black fs-5 fw-bold">
-                    Fillup the form after Pay
+                    Fillup the Form after Payment Complete
                 </div>
                 <form method="post" action="{{ route('place.order') }}" class="p-3">
                     @csrf

@@ -12,8 +12,7 @@
                         </div>
                         <div class="contact__info__content">
                             <h4 class="title">address line</h4>
-                            <span>CMPI, North Halishahar
-                                Port Link Rd,<br> Chittagong 4216</span>
+                            <span>{{ $contactInfo->address }}</span>
                         </div>
                     </div>
                 </div>
@@ -24,8 +23,8 @@
                         </div>
                         <div class="contact__info__content">
                             <h4 class="title">Phone Number</h4>
-                            <span>+1255 - 568 - 6523</span>
-                            <span>+1255 - 568 - 6523</span>
+                            <span>{{ $contactInfo->phone1 }}</span>
+                            <span>{{ $contactInfo->phone2 }}</span>
                         </div>
                     </div>
                 </div>
@@ -36,8 +35,8 @@
                         </div>
                         <div class="contact__info__content">
                             <h4 class="title">Mail Address</h4>
-                            <span>skill@sekho.com</span>
-                            <span>info@skiillsekho.com</span>
+                            <span>{{ $contactInfo->email1 }}</span>
+                            <span>{{ $contactInfo->email2 }}</span>
                         </div>
                     </div>
                 </div>

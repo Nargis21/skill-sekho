@@ -40,7 +40,7 @@ $allCategory = Category::where('status', '2')->get();;
                             </div>
 
                             @else
-
+                            
                             <img class="img-fluid rounded-circle me-2" height="50px" width="50px" src="{{ (!empty(Auth::user()->profile_image)) ? url('upload/profile_images/'.Auth::user()->profile_image) : url('upload/profile_images/avatar.png') }}" alt="Header Avatar">
                             <div class="header__btn d-none d-md-block">
                                 <a href="{{ route('logout') }}" class="btn">Logout</a>

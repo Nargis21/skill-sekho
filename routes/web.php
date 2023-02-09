@@ -9,6 +9,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\Home\BannerController;
 use App\Http\Controllers\Home\SliderController;
 use App\Http\Controllers\OrderController;
+use App\Mail\ContactForm;
 use GuzzleHttp\Psr7\Request;
 
 /*
@@ -29,10 +30,16 @@ Route::get('/home', function () {
     return view('frontend.index');
 });
 
-//contact all route
+//contact form all route
 Route::controller(ContactController::class)->group(function(){
     Route::get('/contact','contact')->name('contact');
     Route::post('/contact/form','contactForm')->name('contact.form');
+});
+
+//contact info admin all route
+Route::controller(ContactController::class)->middleware('admin')->group(function(){
+    Route::get('contact/info','contactInfo')->name('contact.info');
+    Route::post('update/contact/info','updateContactInfo')->name('update.contact.info');
 });
 
 //order all route
@@ -70,6 +77,8 @@ Route::controller(UserController::class)->middleware('auth')->group(function(){
     Route::get('user/changePassword','changePassword')->name('changePassword');
     Route::post('user/updatePassword','updatePassword')->name('updatePassword');
 });
+
+// Route::get('logout', [UserController::class, 'destroy'])->middleware('auth')->name('logout');
 
 //admin user all route
 Route::controller(UserController::class)->middleware('admin')->group(function(){

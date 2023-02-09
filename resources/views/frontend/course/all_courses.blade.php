@@ -20,16 +20,18 @@
                     <small class="card-text">{{ $course->created_by }}</small>
                     <p class="card-title fw-bold fs-5 text-black">BDT. {{ $course->price }}</p>
                 </div>
-                <div class=" mb-3 mx-3">
+                <div class=" mb-3 mx-3 d-flex justify-content-end">
                     <small>
-                        <a href="{{ route('course.details',$course->id) }}" class="text-decoration-underline fw-bold">See More</a>
+                        <a href="{{ route('course.details',$course->id) }}" class="text-decoration-underline fw-bold">See More <img width="15px" src="https://img.icons8.com/plumpy/24/null/long-arrow-right.png"/></a>
                     </small>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
+    <div class="d-flex justify-content-center pt-4">
     {{ $courses->links() }}
+    </div>
     @endif
 </div>
 @endsection

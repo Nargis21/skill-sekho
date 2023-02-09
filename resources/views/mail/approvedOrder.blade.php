@@ -1,9 +1,9 @@
 <x-mail::message>
 # Course Approved!
 
-Your request for the "{{ $courseName }}" course has been approved. 
+Your request for the <mark>{{ $courseName }}</mark> course has been approved. 
 Keep Learning, Keep connected with us.
 
 Thanks,<br>
-{{ config('app.name') }}
+<b>{{ config('app.name') }}</b>
 </x-mail::message>

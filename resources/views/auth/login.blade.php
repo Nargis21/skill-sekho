@@ -14,15 +14,18 @@
         <!-- Username -->
         <div>
             <x-input-label for="username" :value="__('Username')" />
-            <x-text-input id="username" class="block mt-1 w-full text-sm" type="text" name="username" :value="old('username')" required autofocus  />
+            <x-text-input id="username" class="block mt-1 w-full text-sm" type="text" name="username" :value="old('username')" required autofocus />
             <x-input-error :messages="$errors->get('username')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Password')"/>
 
-            <x-text-input id="password" class="block mt-1 w-full text-sm" type="password" name="password" required autocomplete="current-password"  />
+            <div class="position-relative d-flex justify-content-end">
+            <x-text-input id="password" class="mt-1 text-sm" type="password" name="password" required autocomplete="current-password" />
+            <i toggle="#password" style="margin-left: -30px; cursor: pointer;" class="fa fa-fw fa-eye-slash field-icon toggle-password"></i>
+            </div>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -60,3 +63,26 @@
     </form>
 
 </x-guest-layout>
+
+<script>
+    // Function to toggle password visibility
+function togglePasswordVisibility() {
+  var passwordField = document.getElementById("password");
+  var togglePasswordBtn = document.querySelector(".toggle-password");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    togglePasswordBtn.classList.remove("fa-eye-slash");
+    togglePasswordBtn.classList.add("fa-eye");
+  } else {
+    passwordField.type = "password";
+    togglePasswordBtn.classList.remove("fa-eye");
+    togglePasswordBtn.classList.add("fa-eye-slash");
+  }
+}
+
+// Add event listener to toggle password visibility on button click
+var togglePasswordBtn = document.querySelector(".toggle-password");
+togglePasswordBtn.addEventListener("click", togglePasswordVisibility);
+
+</script>

@@ -15,7 +15,7 @@
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-11">
+            <div class="col-12">
                 <div class="card">
                     <div class="card-body">
 

@@ -1,3 +1,8 @@
+ @php
+ use App\Models\ContactInformation;
+ $contactInfo = ContactInformation::find(1);
+ @endphp
+ 
  <!-- contact-area -->
  <section class="homeContact mt-5">
      <div class="container">
@@ -9,7 +14,7 @@
                      </div>
                      <div class="homeContact__content">
                          <p>Our platform provides you with the tools and resources you need to build the future you want. Join our community of learners today and unlock your full potential!</p>
-                         <h2 class="mail"><a href="mailto:Info@webmail.com">Info@skillsekho.com</a></h2>
+                         <h2 class="mail"><a href="mailto:Info@webmail.com">{{ $contactInfo->email1 }}</a></h2>
                      </div>
                  </div>
                  <div class="col-lg-6">
@@ -48,7 +53,7 @@
                  <div class="footer__widget">
                      <div class="fw-title">
                          <h5 class="sub-title">Contact us</h5>
-                         <h4 class="title">+81383 766 284</h4>
+                         <h4 class="title">{{ $contactInfo->phone1 }}</h4>
                      </div>
                      <div class="footer__widget__text">
                          <p>Our platform provides you with the tools and resources you need to build the future you want. Join our community of learners today and unlock your full potential!</p>
@@ -62,8 +67,8 @@
                          <h4 class="title">Bangladesh</h4>
                      </div>
                      <div class="footer__widget__address">
-                         <p>CMPI, North Halishahar <br>Port Link Rd, Chittagong 4216</p>
-                         <a href="mailto:noreply@envato.com" class="mail">info@skiillsekho.com</a>
+                         <p>{{ $contactInfo->address }}</p>
+                         <a href="mailto:noreply@envato.com" class="mail">{{ $contactInfo->email1 }}</a>
                      </div>
                  </div>
              </div>
@@ -75,12 +80,12 @@
                      </div>
                      <div class="footer__widget__social">
                          <p>Stay connected and build meaningful relationships with this guide to social networking</p>
-                         <ul class="footer__social__list">
-                             <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                             <li><a href="#"><i class="fab fa-behance"></i></a></li>
-                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                             <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                         <ul class="d-flex">
+                             <a href="#"><i class="fab fa-facebook-f me-3 text-white"></i></a>
+                             <a href="#"><i class="fab fa-twitter me-3 text-white"></i></a>
+                             <a href="#"><i class="fab fa-behance me-3 text-white"></i></a>
+                             <a href="#"><i class="fab fa-linkedin-in me-3 text-white"></i></a>
+                             <a href="#"><i class="fab fa-instagram me-3 text-white"></i></a>
                          </ul>
                      </div>
                  </div>

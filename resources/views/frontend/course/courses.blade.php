@@ -29,7 +29,9 @@
         </div>
         @endforeach
     </div>
+    <div class="d-flex justify-content-center pt-4">
     {{ $courses->links() }}
+    </div>
     @endif
 </div>
 @endsection
