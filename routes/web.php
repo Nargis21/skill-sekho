@@ -81,7 +81,7 @@ Route::controller(UserController::class)->middleware('auth')->group(function(){
 // Route::get('logout', [UserController::class, 'destroy'])->middleware('auth')->name('logout');
 
 //admin user all route
-Route::controller(UserController::class)->middleware('admin')->group(function(){
+Route::controller(UserController::class)->middleware('superAdmin')->group(function(){
     Route::get('users','users')->name('users');
     Route::get('make/admin/{user_id}','makeAdmin')->name('make.admin');
     Route::get('remove/admin/{user_id}','removeAdmin')->name('remove.admin');

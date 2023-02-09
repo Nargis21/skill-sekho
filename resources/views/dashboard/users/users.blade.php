@@ -52,15 +52,19 @@
                                     <td>
                                         @if($user->role == '2')
                                         <p class="fw-bold fs-6">Admin</p>
+                                        @elseif($user->role == '3')
+                                        <p class="fw-bold fs-6">Super Admin</p>
                                         @else
                                         <p class="fw-bold fs-6">User</p>
                                         @endif
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         @if($user->role == '2')
                                         <a href="{{ route('remove.admin',$user->id) }}" class="btn btn-danger sm " title="Edit Data">
                                             Remove Admin
                                         </a>
+                                        @elseif($user->role == '3')
+                                       <p class="text-primary fw-bold fs-5">Super Admin</p>
                                         @else
                                         <a href="{{ route('make.admin',$user->id) }}" class="btn btn-primary sm " title="Edit Data">
                                             Make Admin

@@ -36,7 +36,7 @@
                     </ul>
                 </li>
 
-                @if(Auth::user()->role == '2')
+                @if(Auth::user()->role == '2' || Auth::user()->role == '3')
                 <li class="menu-title">Frontend Setup</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -77,7 +77,7 @@
                         <li><a href="{{ route('manage.course') }}"><i class="fas fa-tasks"></i> Manage Course</a></li>
                     </ul>
                 </li>
-                <li class="menu-title">Order & User</li>
+                <li class="menu-title">Order</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fab fa-buffer"></i>
@@ -89,6 +89,9 @@
                         <li><a href="{{ route('trashed.orders') }}"><i class="fas fa-trash-restore-alt"></i> Trashed Order</a></li>
                     </ul>
                 </li>
+                @endif
+                @if(Auth::user()->role == '3')
+                <li class="menu-title">User</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fas fa-users"></i>
