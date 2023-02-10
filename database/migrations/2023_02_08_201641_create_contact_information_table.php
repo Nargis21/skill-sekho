@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('phone1')->nullable();
             $table->string('phone2')->nullable();
             $table->string('bkash')->nullable();
+            $table->integer('discount')->nullable();
             $table->timestamps();
         });
     }

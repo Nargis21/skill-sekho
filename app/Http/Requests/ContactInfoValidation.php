@@ -26,6 +26,7 @@ class ContactInfoValidation extends FormRequest
         return [
              
             'address' => ['required'],
+            'discount' => ['required'],
             'email1' => ['required', 'email'],
             'email2' => ['required', 'different:email1','email'],
             'phone1' => ['required', 'regex:/^(?:\+88)?01[15-9]\d{8}$/'],
@@ -38,6 +39,7 @@ class ContactInfoValidation extends FormRequest
     {
         return [
             'address.required' => "Address is Required!",
+            'discount.required' => "Discount is Required!",
             'phone1.required' => "Phone Number 1 is Required!",
             'phone2.required' => "Phone Number 2 is Required!",
             'email1.required' => "Email Address 1 is Required!",

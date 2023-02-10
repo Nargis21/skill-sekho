@@ -41,11 +41,11 @@ $order = Order::where([
         @if(count($order) == 0)
         <div class="col-12 col-md-12 col-lg-7 p-5">
             <div class="d-flex align-items-center">
-                <p class="mt-3 me-2 fs-2 fw-bold text-black">Get TK.<span class="text-warning">1000</span> Discount for Online Payment</p>
+                <p class="mt-3 me-2 fs-2 fw-bold text-black">Get TK.<span class="text-warning">{{ $contactInfo->discount }}</span> Discount for Online Payment</p>
                 <img width="30px" src="{{ asset('frontend/assets/img/icons/about_icon.png') }}" alt="">
             </div>
 
-            <p class="p-0 m-0 fs-4 text-black">You need to pay <mark class="fw-bold">BDT. {{ $course->price - 1000 }}</mark> <span class="text-secondary">(<s>BDT. {{ $course->price }}</s>)</span></p>
+            <p class="p-0 m-0 fs-4 text-black">You need to pay <mark class="fw-bold">BDT. {{ $course->price - $contactInfo->discount }}</mark> <span class="text-secondary">(<s>BDT. {{ $course->price }}</s>)</span></p>
             <p class="py-2 m-0 fs-5  text-black">Please pay at bkash merchant number <mark class="fw-bold">{{ $contactInfo->phone1 }}</mark> </p>
             <div class="card w-75 my-3">
                 <div class="card-header text-black fs-5 fw-bold">
@@ -76,6 +76,16 @@ $order = Order::where([
                         <label class="my-2 text-black" for="exampleInputPassword1">Transaction ID (bkash only)</label>
                         <input name="transaction_id" type="phone" class="form-control" placeholder="TX42O6X032C1" value="{{ old('transaction_id')}}">
                         @error('transaction_id')
+                        <div class="text-danger mt-2">{{$message}}</div>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label class="my-2 text-black" for="exampleInputPassword1">Course Type</label><br>
+                        <input type="radio" name="course_type" value="Online">
+                        <span class="me-2">Online</span>
+                        <input type="radio" name="course_type" value="Offline">
+                        <span>Offline</span>
+                        @error('course_type')
                         <div class="text-danger mt-2">{{$message}}</div>
                         @enderror
                     </div>

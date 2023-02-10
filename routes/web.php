@@ -48,6 +48,7 @@ Route::controller(OrderController::class)->middleware('auth')->group(function(){
     Route::post('place/order','placeOrder')->name('place.order');
     Route::get('my/courses','myCourses')->name('my.courses');
     Route::get('start/course/{course_name}','startCourse')->name('start.course');
+    Route::get('/download/{course_name}','downloadFile')->name('download');
 });
 
 //admin order all route
@@ -125,6 +126,13 @@ Route::controller(CourseController::class)->middleware('admin')->group(function(
     Route::post('update/course','updateCourse')->name('update.course');
     Route::get('deactivate/course/{id}','deactivateCourse')->name('deactivate.course');
     Route::get('activate/course/{id}','activateCourse')->name('activate.course');
+    Route::get('schedule','schedule')->name('schedule');
+    Route::post('add/schedule','addSchedule')->name('add.schedule');
+    Route::get('manage/schedule','manageSchedule')->name('manage.schedule');
+    Route::get('delete/schedule/{id}','deleteSchedule')->name('delete.schedule');
+    Route::get('edit/schedule/{id}','editSchedule')->name('edit.schedule');
+    Route::post('update/schedule','updateSchedule')->name('update.schedule');
+    Route::get('pdf/view/{id}','pdfView')->name('pdf.view');
 });
 
 Route::get('/dashboard', function () {

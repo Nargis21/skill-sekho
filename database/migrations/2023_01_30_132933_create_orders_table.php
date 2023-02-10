@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('phone_contact')->nullable();
             $table->string('phone_emergency')->nullable();
             $table->string('transaction_id')->unique();
+            $table->string('course_type')->nullable();
             $table->string('status')->default('pending');
             $table->timestamp('approved_at')->nullable();
             $table->timestamps();

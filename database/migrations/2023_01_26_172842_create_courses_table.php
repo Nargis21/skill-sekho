@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('price')->nullable();
             $table->string('created_by')->nullable();
             $table->string('banner_image')->nullable();
+            $table->string('course_schedule')->nullable();
             $table->integer('status')->default('1');
             $table->timestamps();
         });

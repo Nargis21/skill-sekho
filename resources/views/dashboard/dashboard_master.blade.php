@@ -130,6 +130,8 @@
 
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
+    <script type="text/javascript" src="node_modules/pdfjs-dist/build/pdf.js"></script>
+
 </body>
 
 </html>

@@ -25,6 +25,7 @@
                                     <th>SL</th>
                                     <th>User Email</th>
                                     <th>Course Name</th>
+                                    <th>Course Type</th>
                                     <th>Amount</th>
                                     <th>Transaction ID</th>
                                     <th>Requested Date</th>
@@ -41,6 +42,9 @@
                                     </td>
                                     <td>
                                         <p>{{ $order->course_name }}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{ $order->course_type }}</p>
                                     </td>
                                     <td>
                                         <p>{{ $order->amount }}</p>

@@ -10,6 +10,7 @@ use App\Mail\PlaceOrder;
 use App\Mail\ApprovedOrder;
 use Mail;
 use Auth;
+use Illuminate\Http\Response;
 
 class OrderController extends Controller
 {
@@ -28,12 +29,13 @@ class OrderController extends Controller
             'phone_contact' => $request->phone_contact,
             'phone_emergency' => $request->phone_emergency,
             'transaction_id' => $request->transaction_id,
+            'course_type' => $request->course_type,
             'created_at' => Carbon::now()
         ]);
 
-         //send email when new category added 
-         $courseName = $request->course_name;
-         Mail::to(Auth::user()->email)->send(new PlaceOrder($courseName));
+        //send email when new category added 
+        $courseName = $request->course_name;
+        Mail::to(Auth::user()->email)->send(new PlaceOrder($courseName));
 
         $notifications = array(
             'message' => 'Course Order Placed Successfully',
@@ -60,12 +62,12 @@ class OrderController extends Controller
             'status' => 'approved',
             'approved_at' => Carbon::now()
         ]);
-        
-         //send email when new category added 
-         $order = Order::findOrFail($order_id);
-         $courseName = $order->course_name;
-         $userEmail = $order->user_email;
-         Mail::to($userEmail)->send(new ApprovedOrder($courseName));
+
+        //send email when new category added 
+        $order = Order::findOrFail($order_id);
+        $courseName = $order->course_name;
+        $userEmail = $order->user_email;
+        Mail::to($userEmail)->send(new ApprovedOrder($courseName));
 
         $notifications = array(
             'message' => 'Course Approved Successfully!',
@@ -97,7 +99,8 @@ class OrderController extends Controller
         return view('dashboard.order.trashed_orders', compact('orders'));
     }
 
-    public function restoreOrder($order_id){
+    public function restoreOrder($order_id)
+    {
         Order::withTrashed()->find($order_id)->restore();
 
         $notifications = array(
@@ -107,7 +110,16 @@ class OrderController extends Controller
         return redirect()->route('approved.orders')->with($notifications);
     }
 
-    public function startCourse($course_name){
-     return view('frontend.course.start_course',compact('course_name'));
+    public function startCourse($course_name)
+    {
+        return view('frontend.course.start_course', compact('course_name'));
+    }
+
+    public function downloadFile($course_name)
+    {
+        $course = Course::where('course_name',$course_name)->first();
+        $file = public_path($course->course_schedule);
+
+        return response()->download($file);
     }
 }

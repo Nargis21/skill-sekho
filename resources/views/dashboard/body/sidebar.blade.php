@@ -77,7 +77,8 @@
                         <li><a href="{{ route('manage.course') }}"><i class="fas fa-tasks"></i> Manage Course</a></li>
                     </ul>
                 </li>
-                <li class="menu-title">Order</li>
+               
+                <li class="menu-title">Order & Schedule</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="fab fa-buffer"></i>
@@ -87,6 +88,16 @@
                         <li><a href="{{ route('pending.orders') }}"><i class="fas fa-clock"></i> Pending Order</a></li>
                         <li><a href="{{ route('approved.orders') }}"><i class="fas fa-check-circle"></i> Approved Order</a></li>
                         <li><a href="{{ route('trashed.orders') }}"><i class="fas fa-trash-restore-alt"></i> Trashed Order</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                    <i class="fas fa-calendar-alt"></i>
+                        <span>Schedule</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('schedule') }}"><i class="fas fa-plus"></i> Add Schedule</a></li>
+                        <li><a href="{{ route('manage.schedule') }}"><i class="fas fa-tasks"></i> Manage Schedule</a></li>
                     </ul>
                 </li>
                 @endif

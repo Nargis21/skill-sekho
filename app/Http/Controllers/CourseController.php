@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Course;
 use Image;
+use Illuminate\Http\Response;
 
 class CourseController extends Controller
 {
@@ -66,9 +67,10 @@ class CourseController extends Controller
         return view('dashboard.course.edit_course', compact('course'));
     }
 
-    public function updateCourse(UpdateCourseDataValidation $request){
+    public function updateCourse(UpdateCourseDataValidation $request)
+    {
         $course_id = $request->id;
-        if($request->file('banner_image')){
+        if ($request->file('banner_image')) {
 
             $image = $request->file('banner_image');
             $imageExt = strtolower($image->getClientOriginalExtension());
@@ -78,10 +80,10 @@ class CourseController extends Controller
             $course = Course::findOrFail($course_id);
             $oldImage = $course->banner_image;
             unlink($oldImage);
-            
-    
+
+
             $save_url = 'upload/course_images/' . $name_gen;
-    
+
             Course::findOrFail($request->id)->update([
                 'course_name' => $request->course_name,
                 'course_category' => $request->course_category,
@@ -92,13 +94,13 @@ class CourseController extends Controller
                 'created_by' => $request->created_by,
                 'banner_image' => $save_url
             ]);
-    
+
             $notifications = array(
                 'message' => 'Course Updated Successfully',
                 'alert-type' => 'success'
             );
             return redirect()->back()->with($notifications);
-        }else{
+        } else {
             Course::findOrFail($request->id)->update([
                 'course_name' => $request->course_name,
                 'course_category' => $request->course_category,
@@ -108,7 +110,7 @@ class CourseController extends Controller
                 'price' => $request->price,
                 'created_by' => $request->created_by
             ]);
-    
+
             $notifications = array(
                 'message' => 'Course Updated Successfully',
                 'alert-type' => 'success'
@@ -143,12 +145,14 @@ class CourseController extends Controller
         return redirect()->route('manage.course')->with($notifications);
     }
 
-    public function allCourses(){
+    public function allCourses()
+    {
         $courses = Course::where('status', '=', '2')->orderBy('id', 'desc')->paginate(8);
         return view('frontend.course.all_courses', compact('courses'));
     }
 
-    public function showCourses($category_name){
+    public function showCourses($category_name)
+    {
         $category = $category_name;
         $courses = Course::where([
             ['course_category', '=', $category_name],
@@ -157,9 +161,124 @@ class CourseController extends Controller
         return view('frontend.course.courses', compact('courses', 'category'));
     }
 
-    public function courseDetails($course_id){
-       
+    public function courseDetails($course_id)
+    {
+
         $course = Course::findOrFail($course_id);
         return view('frontend.course.course_details', compact('course'));
+    }
+
+    public function schedule()
+    {
+        $allCourses = Course::all();
+        return view('dashboard.course.add_schedule', compact('allCourses'));
+    }
+
+    public function addSchedule(Request $request)
+    {
+        $request->validate([
+            'course_schedule' => 'required|mimes:jpeg,png,jpg,gif,svg,jfif,pdf|max:2048',
+        ], [
+            'course_schedule.required' => "Please Upload Course Schedule"
+        ]);
+
+        $image = $request->file('course_schedule');
+        $imageExt = strtolower($image->getClientOriginalExtension());
+        $name_gen = hexdec(uniqid()) . '.' . $imageExt;
+        $image->move(public_path('upload/course_schedule'),$name_gen);
+
+
+        $course = Course::where('course_name', $request->course_name)->first();
+        $oldImage = $course->course_schedule;
+        if ($oldImage != null) {
+            unlink($oldImage);
+        }
+
+
+        $save_url = 'upload/course_schedule/' . $name_gen;
+
+        Course::where('course_name', $request->course_name)->update([
+            'course_schedule' => $save_url
+        ]);
+
+        $notifications = array(
+            'message' => 'Schedule Uploaded Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('manage.schedule')->with($notifications);
+    }
+
+    public function manageSchedule()
+    {
+        $allCourse = Course::whereNotNull('course_schedule')->orderBy('id', 'desc')->get();
+        return view('dashboard.course.manage_schedule', compact('allCourse'));
+    }
+
+    public function editSchedule($id)
+    {
+        $course = Course::find($id);
+        return view('dashboard.course.edit_schedule', compact('course'));
+    }
+
+    public function updateSchedule(Request $request)
+    {
+        $request->validate([
+            'course_schedule' => 'required|mimes:jpeg,png,jpg,gif,svg,jfif,pdf|max:2048',
+        ], [
+            'course_schedule.required' => "Please Upload Course Schedule"
+        ]);
+
+        $image = $request->file('course_schedule');
+        $imageExt = strtolower($image->getClientOriginalExtension());
+        $name_gen = hexdec(uniqid()) . '.' . $imageExt;
+        $image->move(public_path('upload/course_schedule'),$name_gen);
+
+
+        $course = Course::findOrFail($request->id);
+        $oldImage = $course->course_schedule;
+        unlink($oldImage);
+
+        $save_url = 'upload/course_schedule/' . $name_gen;
+
+        Course::findOrFail($request->id)->update([
+            'course_schedule' => $save_url
+        ]);
+
+        $notifications = array(
+            'message' => 'Schedule Updated Successfully',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('manage.schedule')->with($notifications);
+    }
+
+    public function deleteSchedule($id)
+    {
+        $course = Course::findOrFail($id);
+        $oldImage = $course->course_schedule;
+        unlink($oldImage);
+
+        Course::findOrFail($id)->update([
+            'course_schedule' => Null
+        ]);
+
+        return redirect()->route('manage.schedule');
+    }
+
+    public function pdfView($id){
+        $course = Course::findOrFail($id);
+        if ($course) {
+            $file = public_path( $course->course_schedule);
+            if (file_exists($file)) {
+                $headers = [
+                    'Content-Type' => 'application/pdf',
+                ];
+                return response()->file($file, $headers);
+            } else {
+                return response()->json(['error' => 'File not found'], 404);
+            }
+        } else {
+            return response()->json(['error' => 'Course not found'], 404);
+        }
+    
     }
 }

@@ -82,6 +82,16 @@
                                 </div>
                             </div>
                             <!-- end row -->
+                            <div class="row mb-3">
+                                <label class="col-sm-2 col-form-label">Discount</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" name="discount" value="{{ $contactInfo->discount }}">
+                                    @error('discount')
+                                    <div class="text-danger mt-2">{{$message}}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <!-- end row -->
 
 
                             <input type="submit" value="Update Information" class="btn btn-info waves-effect waves-light" />

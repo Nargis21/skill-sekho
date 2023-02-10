@@ -1,5 +1,8 @@
 @extends('dashboard.dashboard_master')
 @section('main_content')
+@php
+use App\Models\Course;
+@endphp
 
 <div class="page-content">
     <div class="container-fluid">
@@ -24,6 +27,7 @@
                                 <tr>
                                     <th>SL</th>
                                     <th>Course Name</th>
+                                    <th>Course Type</th>
                                     <th>Amount</th>
                                     <th>Transaction ID</th>
                                     <th>Enrolled Date</th>
@@ -33,10 +37,16 @@
 
                             <tbody>
                                 @foreach($courses as $course)
+                                @php
+                                $schedule = Course::where('course_name',$course->course_name)->first();
+                                @endphp
                                 <tr>
                                     <td>{{ $loop->index + 1 }}</td>
                                     <td>
                                         <p>{{ $course->course_name }}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{ $course->course_type }}</p>
                                     </td>
                                     <td>
                                         <p>{{ $course->amount }}</p>
@@ -48,11 +58,27 @@
                                     <td>
                                         <p>{{ $course->created_at->format('d/m/Y h:i:s A') }}</p>
                                     </td>
-                                    <td >
+                                    <td>
                                         @if($course->status == 'approved')
+                                        @if($course->course_type == 'Online')
                                         <a href="{{ route('start.course',$course->course_name) }}" class="btn btn-primary ">
                                             Start Course
                                         </a>
+                                        @else
+
+
+                                        @if(!empty($schedule->course_schedule))
+                                        <a href="{{ route('download',$course->course_name) }}" class="btn btn-primary d-flex gap-2 align-items-center">
+                                            <i class="fas fa-download"></i> Schedule
+                                        </a>
+                                        @else
+                                        <a href="{{ route('download',$course->course_name) }}" class="btn btn-primary disabled d-flex gap-2 align-items-center">
+                                            <i class="fas fa-download"></i> Schedule
+                                        </a>
+
+                                        @endif
+
+                                        @endif
                                         @else
                                         <p class="alert alert-danger mx-auto text-center" title="Edit Data">
                                             Pending

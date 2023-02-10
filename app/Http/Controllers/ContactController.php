@@ -45,7 +45,8 @@ class ContactController extends Controller
             'email2' => $request->email2,
             'phone1' => $request->phone1,
             'phone2' => $request->phone2,
-            'bkash' => $request->bkash
+            'bkash' => $request->bkash,
+            'discount' => $request->discount
         ]);
 
         $notifications = array(
