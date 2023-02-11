@@ -95,7 +95,7 @@ class UserController extends Controller
     }
 
     public function users(){
-        $users = User::all();
+        $users = User::where('email_verified_at', '!=', null)->get();
         return view('dashboard.users.users', compact('users'));
     }
 

@@ -100,6 +100,17 @@
                         <li><a href="{{ route('manage.schedule') }}"><i class="fas fa-tasks"></i> Manage Schedule</a></li>
                     </ul>
                 </li>
+                <li class="menu-title">Student</li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                    <i class="fas fa-user-graduate"></i>
+                        <span>Student</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('online.students') }}"><i class="fas fa-globe"></i>Online Students</a></li>
+                        <li><a href="{{ route('offline.students') }}"><i class="fas fa-school"></i> Offline Student</a></li>
+                    </ul>
+                </li>
                 @endif
                 @if(Auth::user()->role == '3')
                 <li class="menu-title">User</li>

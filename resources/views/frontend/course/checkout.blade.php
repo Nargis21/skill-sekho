@@ -55,7 +55,7 @@ $order = Order::where([
                     @csrf
                     <input type="hidden" name="user_email" value="{{ Auth::user()->email }}">
                     <input type="hidden" name="course_name" value="{{ $course->course_name }}">
-                    <input type="hidden" name="amount" value="{{ $course->price - 1000 }}">
+                    <input type="hidden" name="amount" value="{{ $course->price - $contactInfo->discount }}">
                     <div class="form-group ">
                         <label class="mb-2 text-black" for="exampleInputEmail1">Phone Number (Active)</label>
 

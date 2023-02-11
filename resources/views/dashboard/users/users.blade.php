@@ -26,6 +26,7 @@
                                     <th>Image</th>
                                     <th>Username</th>
                                     <th>Full Name</th>
+                                    <th>Phone</th>
                                     <th>Email</th>
                                     <th>Role</th>
                                     <th>Action</th>
@@ -45,17 +46,20 @@
                                     <td>
                                         <p>{{ $user->name }}</p>
                                     </td>
+                                    <td>
+                                        <p>{{ $user->phone }}</p>
+                                    </td>
                                    
                                     <td>
                                         <p>{{ $user->email }}</p>
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         @if($user->role == '2')
-                                        <p class="fw-bold fs-6">Admin</p>
+                                        <p class="text-primary fw-bold"><i class="fas fa-user-shield"></i> Admin</p>
                                         @elseif($user->role == '3')
-                                        <p class="fw-bold fs-6">Super Admin</p>
+                                        <p class="text-primary fw-bold"><i class="fas fa-crown"></i> Super Admin</p>
                                         @else
-                                        <p class="fw-bold fs-6">User</p>
+                                        <p class="text-primary fw-bold"><i class="fas fa-user-check"></i> User</p>
                                         @endif
                                     </td>
                                     <td class="text-center">
@@ -64,7 +68,7 @@
                                             Remove Admin
                                         </a>
                                         @elseif($user->role == '3')
-                                       <p class="text-primary fw-bold fs-5">Super Admin</p>
+                                       <p class="text-primary fw-bold"><i class="fas fa-crown"></i> Super Admin</p>
                                         @else
                                         <a href="{{ route('make.admin',$user->id) }}" class="btn btn-primary sm " title="Edit Data">
                                             Make Admin

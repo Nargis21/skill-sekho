@@ -59,6 +59,8 @@ Route::controller(OrderController::class)->middleware('admin')->group(function()
     Route::get('trash/order/{order_id}','trashOrder')->name('trash.order');
     Route::get('trashed/orders','trashedOrders')->name('trashed.orders');
     Route::get('restore/order/{order_id}','restoreOrder')->name('restore.order');
+    Route::get('online/students','onlineStudents')->name('online.students');
+    Route::get('offline/students','offlineStudents')->name('offline.students');
 });
 
 //course all route

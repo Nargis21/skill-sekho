@@ -122,4 +122,16 @@ class OrderController extends Controller
 
         return response()->download($file);
     }
+
+    public function onlineStudents()
+    {
+        $students = Order::where([['status', '=', 'approved'],['course_type', '=', 'Online']])->orderBy('id', 'desc')->get();
+        return view('dashboard.order.online_students', compact('students'));
+    }
+
+    public function offlineStudents()
+    {
+        $students = Order::where([['status', '=', 'approved'],['course_type', '=', 'Offline']])->orderBy('id', 'desc')->get();
+        return view('dashboard.order.offline_students', compact('students'));
+    }
 }
