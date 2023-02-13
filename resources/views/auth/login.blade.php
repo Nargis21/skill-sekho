@@ -22,13 +22,20 @@
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')"/>
 
+            <x-text-input id="password" class="mt-1 text-sm block w-full" type="password" name="password" required autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+        <!-- <div class="mt-4 text-center w-100">
+            <x-input-label for="password" :value="__('Password')"/>
+
             <div class="position-relative d-flex justify-content-end">
-            <x-text-input id="password" class="mt-1 text-sm" type="password" name="password" required autocomplete="current-password" />
+            <x-text-input id="password" class="mt-1 text-sm " type="password" name="password" required autocomplete="current-password" />
             <i toggle="#password" style="margin-left: -30px; cursor: pointer;" class="fa fa-fw fa-eye-slash field-icon toggle-password"></i>
             </div>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+        </div> -->
 
         <div class="flex items-center justify-start mt-4">
             @if (Route::has('password.request'))
